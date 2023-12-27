@@ -1,63 +1,91 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dikhr</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        main {
+            text-align: center;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .numfield {
+            font-size: 3em;
+            color: #fff;
+            margin: 0;
+            user-select: none;
+            /* Prevent text selection */
+        }
+
+        .plus,
+        .minus {
+            border: 1px solid #fff;
+            color: #fff;
+            font-size: 2em;
+            width: 60px;
+            height: 60px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .plus:hover,
+        .minus:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .plus {
+            margin-right: 10px;
+        }
+
+        .minus {
+            margin-left: 10px;
+        }
+    </style>
+
+    <script>
+        let number = 0;
+
+        function plus() {
+            number++;
+            document.getElementById("numfield").textContent = number;
+        }
+        function minus() {
+            if (number > 0) {
+                number--;
+                document.getElementById("numfield").textContent = number;
+            }
+        }
+    </script>
+</head>
 
 <body>
-
-<h1>Dikhr</h1>
-
+    <main>
+        <p id="numfield" class="numfield">0</p>
+        <div class="plus" onclick="plus()">+</div>
+        <div class="minus" onclick="minus()">-</div>
+    </main>
 </body>
-<p1 class="numfield">0</p1>
-<div class="plus">+</div>
-<div class="minus">-</div>
 
-<style>
-    h1, .numfield, .plus, .minus {
-    color: white;
-    text-align: center;
-}
-.numfield {
-    position: absolute;
-    font-size: 100;
-}
-.plus {
-    border: 1px solid;
-    position: absolute;
-    font-size: 100;
-    width: 60;
-    top: 30%;
-    left: 43%;
-}
-.plus:active {
-    background-color: white;
-    color: black;
-    js:plus();
-}
-.minus:active {
-    background-color: white;
-    color: black;
-    js:minus();
-}
-.minus {
-    border: 1px solid;
-    position: absolute;
-    font-size: 100;
-    width: 60;
-    bottom: 30%;
-    left: 43%
-}
-
-body {
-background-color: black;
-}
-</style>
-
-<script>
-let number = 0;
-
-function plus() {
-    number++;
-}
-function minus() {
-    number--;
-}
-</script>
 </html>
