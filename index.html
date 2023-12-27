@@ -35,6 +35,10 @@
             /* Prevent text selection */
         }
 
+        #record {
+            color: white;
+        }
+
         .plus,
         .minus {
             border: 1px solid #fff;
@@ -66,9 +70,14 @@
 
     <script>
         let number = 0;
-
+        let record = 0
         function plus() {
             number++;
+            if (number >= record) {
+                record = number;
+                document.getElementById("record").textContent = "Rekord: " + number;
+
+            }
             document.getElementById("numfield").textContent = number;
         }
         function minus() {
@@ -77,12 +86,17 @@
                 document.getElementById("numfield").textContent = number;
             }
         }
+        function reset() {
+            number = 0;
+            document.getElementById("numfield").textContent = number;
+        }
     </script>
 </head>
 
 <body>
     <main>
-        <p id="numfield" class="numfield">0</p>
+        <p id="numfield" class="numfield" onclick="reset()">0</p>
+        <p id="record" class="record">Max: 0</p>
         <div class="plus" onclick="plus()">+</div>
         <div class="minus" onclick="minus()">-</div>
     </main>
