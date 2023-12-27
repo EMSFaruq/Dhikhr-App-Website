@@ -8,7 +8,11 @@
     <title>Dhikr</title>
     <style>
         body {
-            background-color: #1a1a1a;
+            background-image: url("https://cdn.glitch.global/53ecfad8-c679-4f4c-9315-b10e316623cc/Kaaba.png?v=1703675743124");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-color: #434343;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -39,8 +43,8 @@
             color: white;
         }
 
-        .plus,
-        .minus {
+        .plus {
+            border-radius: 10px;
             border: 1px solid #fff;
             color: #fff;
             font-size: 2em;
@@ -50,21 +54,16 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.9s, color 0.3s;
         }
 
-        .plus:hover,
-        .minus:hover {
+        .plus:hover {
             background-color: #fff;
             color: #000;
         }
 
         .plus {
             margin-right: 10px;
-        }
-
-        .minus {
-            margin-left: 10px;
         }
     </style>
 
@@ -80,12 +79,7 @@
             }
             document.getElementById("numfield").textContent = number;
         }
-        function minus() {
-            if (number > 0) {
-                number--;
-                document.getElementById("numfield").textContent = number;
-            }
-        }
+
         function reset() {
             number = 0;
             document.getElementById("numfield").textContent = number;
@@ -98,7 +92,7 @@
         <p id="numfield" class="numfield" onclick="reset()">0</p>
         <p id="record" class="record">Max: 0</p>
         <div class="plus" onclick="plus()">+</div>
-        <div class="minus" onclick="minus()">-</div>
+
     </main>
 </body>
 
