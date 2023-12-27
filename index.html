@@ -1,0 +1,63 @@
+<html>
+
+<body>
+
+<h1>Dikhr</h1>
+
+</body>
+<p1 class="numfield">0</p1>
+<div class="plus">+</div>
+<div class="minus">-</div>
+
+<style>
+    h1, .numfield, .plus, .minus {
+    color: white;
+    text-align: center;
+}
+.numfield {
+    position: absolute;
+    font-size: 100;
+}
+.plus {
+    border: 1px solid;
+    position: absolute;
+    font-size: 100;
+    width: 60;
+    top: 30%;
+    left: 43%;
+}
+.plus:active {
+    background-color: white;
+    color: black;
+    js:plus();
+}
+.minus:active {
+    background-color: white;
+    color: black;
+    js:minus();
+}
+.minus {
+    border: 1px solid;
+    position: absolute;
+    font-size: 100;
+    width: 60;
+    bottom: 30%;
+    left: 43%
+}
+
+body {
+background-color: black;
+}
+</style>
+
+<script>
+let number = 0;
+
+function plus() {
+    number++;
+}
+function minus() {
+    number--;
+}
+</script>
+</html>
