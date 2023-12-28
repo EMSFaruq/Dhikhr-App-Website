@@ -96,9 +96,24 @@ vibrate();
             number = 0;
             document.getElementById("numfield").textContent = number;
         }
-function vibrate() {
-window.navigator.vibrate([500])
+
+function vibrieren() {
+  if ("vibrate" in navigator) {
+    navigator.vibrate(200); 
+  } else if ("mozVibrate" in navigator) {
+    // Für Firefox OS
+    navigator.mozVibrate([200]);
+  } else if ("webkitVibrate" in navigator) {
+    // Für ältere WebKit-basierte Browser
+    navigator.webkitVibrate([200]);
+  }
 }
+
+// Beispielaufruf:
+vibrieren();
+```
+
+Diese Funktion überprüft zunächst, ob die Vibration-API im Browser unterstützt wird, und verwendet dann die entsprechende Methode, um das Handy vibrieren zu lassen. Beachte, dass die Dauer der Vibration in Millisekunden angegeben ist. In diesem Beispiel vibriert es für 200 Millisekunden.
     </script>
 </head>
 
