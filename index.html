@@ -87,12 +87,16 @@
             }
 
             document.getElementById("numfield").textContent = number;
+vibrate();
         }
 
         function reset() {
             number = 0;
             document.getElementById("numfield").textContent = number;
         }
+function vibrate() {
+window.navigator.vibrate([500])
+}
     </script>
 </head>
 
