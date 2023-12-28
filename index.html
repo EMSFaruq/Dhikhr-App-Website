@@ -66,7 +66,7 @@
             font-family: "Comic Sans MS", "Comic Sans", cursive;
 
             user-select: none;
-
+            <<<<<<< HEAD=======>>>>>>>c5a91614de2eb2a4f68e3ad7eeb5482bd4f370b0
         }
 
         #record {
@@ -111,8 +111,6 @@
 
             font-family: "Comic Sans MS", "Comic Sans", cursive;
 
-            margin-right: 10px;
-
         }
 
         .plus:hover {
@@ -127,14 +125,18 @@
     <script>
 
         let number = 0;
-
         let record = 0;
 
-        import {
-            Haptics, ImpactStyle
-        } from '@capacitor/haptics'; const hapticsVibrate = async () => {
-            await Haptics.vibrate();
-        };
+        function vibrate() {
+            if ("vibrate" in navigator) {
+                navigator.vibrate([200]);
+            } else if ("mozVibrate" in navigator) {
+                navigator.mozVibrate([200]);
+            } else if ("webkitVibrate" in navigator) {
+                navigator.webkitVibrate([200]);
+            }
+        }
+
         function plus() {
 
             number++;
@@ -148,15 +150,12 @@
             }
 
             document.getElementById("numfield").textContent = number;
-            Haptics.vibrate(100);
-
 
             if (number % 100 == 0) {
 
                 vibrate();
 
             }
-
         }
 
         function reset() {
@@ -184,7 +183,6 @@
         <p id="add"></p>
 
         <div class="plus" onclick="plus()">+</div>
-
     </main>
 
 </body>
