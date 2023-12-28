@@ -1,110 +1,192 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Dhikr</title>
 
     <style>
         body {
+
             background-image: url("https://cdn.glitch.global/53ecfad8-c679-4f4c-9315-b10e316623cc/Kaaba.png?v=1703675743124");
+
             background-position: center;
+
             background-size: cover;
+
             background-repeat: no-repeat;
+
             background-color: #434343;
+
             display: flex;
+
             justify-content: center;
+
             align-items: center;
+
             height: 100vh;
+
             margin: 0;
+
             font-family: "Comic Sans MS", "Comic Sans", cursive;
+
         }
 
         main {
+
             text-align: center;
+
         }
 
         h1 {
+
             color: #fff;
+
             font-size: 100px;
+
             margin-bottom: 20px;
+
         }
 
         .numfield {
+
             font-size: 100px;
+
             color: #fff;
+
             margin: 0;
+
             font-family: "Comic Sans MS", "Comic Sans", cursive;
+
             user-select: none;
-            /* Prevent text selection */
+
         }
 
         #record {
+
             color: white;
+
             user-select: none;
+
             font-family: "Comic Sans MS", "Comic Sans", cursive;
+
             font-size: 50px;
+
         }
 
         .plus {
+
             border-radius: 10px;
+
             border: 1px solid #fff;
+
             color: #fff;
+
             font-size: 2em;
+
             width: 100%;
+
             height: 100%;
+
             display: inline-flex;
+
             justify-content: center;
+
             align-items: center;
+
             cursor: pointer;
+
             transition: background-color 0.9s, color 0.3s;
+
             user-select: none;
+
             font-size: 100px;
+
             font-family: "Comic Sans MS", "Comic Sans", cursive;
+
+            margin-right: 10px;
 
         }
 
         .plus:hover {
+
             background-color: #fff;
+
             color: #000;
 
         }
-
-        .plus {
-            margin-right: 10px;
-        }
     </style>
+
     <script>
+
         let number = 0;
-        let record = 0
+
+        let record = 0;
+
+        import {
+            Haptics, ImpactStyle
+        } from '@capacitor/haptics'; const hapticsVibrate = async () => {
+            await Haptics.vibrate();
+        };
         function plus() {
+
             number++;
+
             if (number >= record) {
+
                 record = number;
+
                 document.getElementById("record").textContent = "Max: " + record;
+
             }
 
             document.getElementById("numfield").textContent = number;
+            Haptics.vibrate(100);
+
+
+            if (number % 100 == 0) {
+
+                vibrate();
+
+            }
+
         }
 
         function reset() {
+
             number = 0;
+
             document.getElementById("numfield").textContent = number;
+
         }
+
     </script>
+
 </head>
 
 <body>
+
     <main>
+
         <h1>Dhikr</h1>
+
         <p id="numfield" class="numfield" onclick="reset()">0</p>
+
         <p id="record" class="record">Max: 0</p>
+
         <p id="add"></p>
+
         <div class="plus" onclick="plus()">+</div>
 
     </main>
+
 </body>
 
 </html>
