@@ -38,7 +38,6 @@
             margin: 0;
             font-family: "Comic Sans MS", "Comic Sans", cursive;
             user-select: none;
-            /* Prevent text selection */
         }
 
         #record {
@@ -63,22 +62,28 @@
             user-select: none;
             font-size: 100px;
             font-family: "Comic Sans MS", "Comic Sans", cursive;
-
+            margin-right: 10px;
         }
 
         .plus:hover {
             background-color: #fff;
             color: #000;
-
-        }
-
-        .plus {
-            margin-right: 10px;
         }
     </style>
     <script>
         let number = 0;
-        let record = 0
+        let record = 0;
+
+        function vibrate() {
+            if ("vibrate" in navigator) {
+                navigator.vibrate([200]); 
+            } else if ("mozVibrate" in navigator) {
+                navigator.mozVibrate([200]);
+            } else if ("webkitVibrate" in navigator) {
+                navigator.webkitVibrate([200]);
+            }
+        }
+
         function plus() {
             number++;
             if (number >= record) {
@@ -87,33 +92,15 @@
             }
 
             document.getElementById("numfield").textContent = number;
-if(number % 100) {
-vibrate();
-}
+            if (number % 100 === 0) {
+                vibrate();
+            }
         }
 
         function reset() {
             number = 0;
             document.getElementById("numfield").textContent = number;
         }
-
-function vibrieren() {
-  if ("vibrate" in navigator) {
-    navigator.vibrate(200); 
-  } else if ("mozVibrate" in navigator) {
-    // Für Firefox OS
-    navigator.mozVibrate([200]);
-  } else if ("webkitVibrate" in navigator) {
-    // Für ältere WebKit-basierte Browser
-    navigator.webkitVibrate([200]);
-  }
-}
-
-// Beispielaufruf:
-vibrieren();
-```
-
-Diese Funktion überprüft zunächst, ob die Vibration-API im Browser unterstützt wird, und verwendet dann die entsprechende Methode, um das Handy vibrieren zu lassen. Beachte, dass die Dauer der Vibration in Millisekunden angegeben ist. In diesem Beispiel vibriert es für 200 Millisekunden.
     </script>
 </head>
 
@@ -124,7 +111,6 @@ Diese Funktion überprüft zunächst, ob die Vibration-API im Browser unterstüt
         <p id="record" class="record">Max: 0</p>
         <p id="add"></p>
         <div class="plus" onclick="plus()">+</div>
-
     </main>
 </body>
 
