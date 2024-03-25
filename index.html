@@ -66,6 +66,7 @@
             font-family: "Comic Sans MS", "Comic Sans", cursive;
 
             user-select: none;
+
         }
 
         #record {
@@ -110,6 +111,8 @@
 
             font-family: "Comic Sans MS", "Comic Sans", cursive;
 
+            margin-right: 10px;
+
         }
 
         .plus:hover {
@@ -124,16 +127,25 @@
     <script>
 
         let number = 0;
+
         let record = 0;
 
         function vibrate() {
+
             if ("vibrate" in navigator) {
-                navigator.vibrate([200]);
+
+                navigator.vibrate(200);
+
             } else if ("mozVibrate" in navigator) {
-                navigator.mozVibrate([200]);
+
+                navigator.mozVibrate(200);
+
             } else if ("webkitVibrate" in navigator) {
-                navigator.webkitVibrate([200]);
+
+                navigator.webkitVibrate(200);
+
             }
+
         }
 
         function plus() {
@@ -150,11 +162,11 @@
 
             document.getElementById("numfield").textContent = number;
 
-            if (number % 1020 == 1) {
-
-                vibrate();
-
+            if (number % 100 === 0) {
+                var audio = new Audio('https://cdn.glitch.global/53ecfad8-c679-4f4c-9315-b10e316623cc/Vibrate.mp3?v=1711403276820');
+                audio.play();
             }
+
         }
 
         function reset() {
@@ -182,6 +194,7 @@
         <p id="add"></p>
 
         <div class="plus" onclick="plus()">+</div>
+
     </main>
 
 </body>
